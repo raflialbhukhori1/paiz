@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Predikat Nilai</title>
+    <style>
+        /* Reset default styles */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        /* Body styling */
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #d9e7dc; /* Warna dasar hijau muda */
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+        }
+
+        /* Main container styling */
+        .container {
+            background-color: #f2ede9; /* Warna dasar krem muda */
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
+            text-align: center;
+            animation: fadeIn 0.5s ease-in-out;
+            max-width: 400px;
+            width: 100%;
+        }
+
+        /* Header styling */
+        h2 {
+            color: #4c6b5b; /* Warna hijau tua */
+            margin-bottom: 20px;
+        }
+
+        /* Form styling */
+        form {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        label {
+            font-size: 18px;
+            color: #362f28; /* Warna coklat tua */
+            margin-bottom: 10px;
+        }
+
+        input[type="text"],
+        input[type="number"] {
+            padding: 10px;
+            margin-bottom: 15px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            width: 100%;
+            max-width: 300px;
+            font-size: 16px;
+            box-shadow: 0 0 5px rgba(0, 0, 0, 0.1);
+        }
+
+        /* Button styling */
+        button {
+            padding: 12px 30px;
+            background-color: #4c6b5b; /* Warna hijau tua */
+            color: #fff; /* Warna teks putih */
+            border: none;
+            cursor: pointer;
+            border-radius: 5px;
+            font-size: 16px;
+            transition: background-color 0.3s ease;
+        }
+
+        button:hover {
+            background-color: #344c3d; /* Warna hijau tua lebih gelap saat hover */
+        }
+
+        /* Predikat styling */
+        .predikat {
+            font-size: 20px;
+            margin-top: 20px;
+            font-weight: bold;
+        }
+
+        /* Warna predikat */
+        .lulus {
+            color: #4c6b5b; /* Warna hijau tua */
+        }
+
+        .gagal {
+            color: #b53f3f; /* Warna merah */
+        }
+
+        /* Animasi fadeIn */
+        @keyframes fadeIn {
+            0% {
+                opacity: 0;
+                transform: translateY(-20px);
+            }
+            100% {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h2>Predikat Nilai</h2>
+        <form id="nilai-form">
+            <label for="nama">Nama:</label>
+            <input type="text" id="nama" name="nama" required><br><br>
+            <label for="nilai">Nilai:</label>
+            <input type="number" id="nilai" name="nilai" required>
+            <button type="submit">Hitung Predikat</button>
+        </form>
+        <div id="hasil" class="predikat"></div>
+    </div>
+
+    <script>
+        document.getElementById('nilai-form').addEventListener('submit', function(event) {
+            event.preventDefault();
+            var nama = document.getElementById('nama').value;
+            var nilai = document.getElementById('nilai').value;
+
+            // Hitung predikat
+            var predikat = (nilai >= 75) ? 'Lulus' : 'Gagal';
+            var predikatClass = (nilai >= 75) ? 'lulus' : 'gagal';
+
+            // Tampilkan hasil predikat
+            document.getElementById('hasil').textContent = 'Nama: ' + nama + ', Predikat: ' + predikat;
+            document.getElementById('hasil').className = 'predikat ' + predikatClass;
+        });
+    </script>
+</body>
+</html>
